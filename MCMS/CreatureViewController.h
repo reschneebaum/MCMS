@@ -17,5 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UILabel *originLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end

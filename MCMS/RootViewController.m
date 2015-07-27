@@ -23,12 +23,15 @@
 
     //defaults
     self.addButton.enabled = false;
-    MagicalCreature *arion = [[MagicalCreature alloc] initWithName:@"Arion" withDetail:@"swift steed of Demeter by Poseidon" withOrigin:@"Greek" withImage:nil];
-    MagicalCreature *alBuraq = [[MagicalCreature alloc] initWithName:@"Al-Burāq" withDetail:@"heavenly transporter of the prophets" withOrigin:@"Mecca" withImage:nil];
-    MagicalCreature *longma = [[MagicalCreature alloc] initWithName:@"Longma" detail:@"dragon horse" withOrigin:@"China" image:nil];
-    MagicalCreature *phoenix = [[MagicalCreature alloc] initWithName:@"Phoenix" detail:@"regeneration" image:nil];
+    MagicalCreature *horseOne = [[MagicalCreature alloc] initWithName:@"Arion" withDetail:@"swift steed of Demeter by Poseidon" withOrigin:@"Greece" withImage:[UIImage imageNamed:@"arion.jpg"]];
+    MagicalCreature *horseTwo = [[MagicalCreature alloc] initWithName:@"Al-Burāq" withDetail:@"heavenly transporter of the prophets" withOrigin:@"Mecca" withImage:[UIImage imageNamed:@"al-buraq.jpg"]];
+    MagicalCreature *horseThree = [[MagicalCreature alloc] initWithName:@"Longma" withDetail:@"dragon horse" withOrigin:@"China" withImage:[UIImage imageNamed:@"longma.jpg"]];
+    MagicalCreature *horseFour = [[MagicalCreature alloc] initWithName:@"Cheval Gauvain" withDetail:@"harbinger of death" withOrigin:@"France" withImage:[UIImage imageNamed:@"cheval-gauvain.jpg"]];
+    MagicalCreature *horseFive = [[MagicalCreature alloc] initWithName:@"Pegasus" withDetail:@"divine winged defeater of the chimera" withOrigin:@"Greece" withImage:[UIImage imageNamed:@"pegasus.jpg"]];
+    MagicalCreature *horseSix = [[MagicalCreature alloc] initWithName:@"Sleipnir" withDetail:@"Odin's eight-legged horse, the best among gods and men" withOrigin:@"Norway" withImage:[UIImage imageNamed:@"sleipnir.jpg"]];
+    MagicalCreature *horseSeven = [[MagicalCreature alloc] initWithName:@"Uchchaihshravas" withDetail:@"seven-headed winged king of horses" withOrigin:@"India" withImage:[UIImage imageNamed:@"uchchaihshravas.jpg"]];
 
-    self.creatures = [NSMutableArray arrayWithObjects:arion,/*sphinx,phoenix,*/ nil];
+    self.creatures = [NSMutableArray arrayWithObjects:horseTwo, horseOne, horseFour, horseThree, horseFive, horseSix, horseSeven, nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -50,7 +53,8 @@
 
 //adds new creature of class MagicalCreature to mutable array
 - (IBAction)onAddButtonPressed:(UIButton *)sender {
-    MagicalCreature *creature = [[MagicalCreature alloc] initWithName:(NSString *)name withDetail:(NSString *)detail withOrigin:(NSString *)origin withImage:(UIImage *)image] {
+    MagicalCreature *creature = [[MagicalCreature alloc] init];
+    creature.creatureName = self.textField.text;
     [self.creatures addObject:creature];
 
     [self.tableView reloadData];
@@ -65,6 +69,7 @@
     MagicalCreature *creature = [self.creatures objectAtIndex:indexPath.row];
     cell.textLabel.text = creature.creatureName;
     cell.detailTextLabel.text = creature.creatureDetail;
+    cell.imageView.image = creature.creatureImage;
 
     return cell;
 }

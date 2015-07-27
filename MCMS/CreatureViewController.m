@@ -28,6 +28,8 @@
 
     self.nameLabel.text = self.creature.creatureName;
     self.detailTextView.text = self.creature.creatureDetail;
+    self.originLabel.text = self.creature.creatureOrigin;
+    self.imageView.image = self.creature.creatureImage;
 }
 
 - (IBAction)onEditButtonTapped:(UIButton *)sender {
@@ -38,6 +40,9 @@
 - (IBAction)onDoneButtonTapped:(UIButton *)sender {
     [self switchEditDoneButtonsOnButtonTap];
     self.nameLabel.text = self.nameTextField.text;
+    self.nameLabel.hidden = false;
+    self.nameTextField.hidden = true;
+    self.creature.creatureName = self.nameLabel.text;
 }
 
 -(void)switchEditDoneButtonsOnButtonTap {
